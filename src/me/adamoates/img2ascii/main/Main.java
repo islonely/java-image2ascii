@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+
 import me.adamoates.img2ascii.main.Image2Ascii.AsciiImage;
 
 public class Main {
@@ -13,15 +14,17 @@ public class Main {
 	public static void main(String[] args) {
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File("/home/adamoates/Pictures/Screenshot from 2021-03-27 18-23-21.png"));
+			img = ImageIO.read(new File("/home/adamoates/Pictures/signal-2021-03-24-125935.jpg"));
 		} catch (IOException e) {
 			System.err.println("Failed to read file.");
 			e.printStackTrace();
 			System.exit(1);
 		}
 		
-		AsciiImage ascii = new Image2Ascii.AsciiImage(img, 0.3, 0.3);
-		System.out.println(ascii.export("/home/adamoates/Documents/ascii.txt"));
+		AsciiImage ascii = new Image2Ascii.AsciiImage(img);
+		ascii.export("/home/adamoates/Documents/ascii.txt");
+		ascii.exportHtml("/home/adamoates/Documents/ascii.html");
+		ascii.getFrame().zoom(0.3);
 	}
 
 }
