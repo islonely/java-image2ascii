@@ -14,17 +14,18 @@ public class Main {
 	public static void main(String[] args) {
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File("/home/adamoates/Pictures/signal-2021-03-24-125935.jpg"));
+			img = ImageIO.read(new File("/home/adamoates/Pictures/OneDrive-2021-04-25/IMG_20190913_220054__01.jpg"));
 		} catch (IOException e) {
 			System.err.println("Failed to read file.");
 			e.printStackTrace();
 			System.exit(1);
 		}
 		
-		AsciiImage ascii = new Image2Ascii.AsciiImage(img);
+		AsciiImage ascii = new Image2Ascii.AsciiImage(img, 1);
+		ascii.getFrame().zoom(0.25);
 		ascii.export("/home/adamoates/Documents/ascii.txt");
 		ascii.exportHtml("/home/adamoates/Documents/ascii.html");
-		ascii.getFrame().zoom(0.3);
+		ascii.exportImage("/home/adamoates/Documents/ascii.png");
 	}
 
 }
